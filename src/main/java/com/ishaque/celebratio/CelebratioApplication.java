@@ -1,18 +1,18 @@
 package com.ishaque.celebratio;
 
+import java.util.Scanner;
+
 import javax.sql.DataSource;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import lombok.extern.java.Log;
 
 @Log
 
 @SpringBootApplication
-public class CelebratioApplication implements CommandLineRunner {
+public class CelebratioApplication {
 	final DataSource dataSource;
 
 	public CelebratioApplication(DataSource dataSource) {
@@ -20,16 +20,8 @@ public class CelebratioApplication implements CommandLineRunner {
 	}
 
 	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
 		SpringApplication.run(CelebratioApplication.class, args);
-	}
-
-	@Override
-	public void run(String... args) throws Exception {
-		log.info("JDBC" + dataSource.toString());
-
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		jdbcTemplate.execute("SELECT 1");
-
 	}
 
 }
